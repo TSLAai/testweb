@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Taxi Retro - Визитка</title>
+    <title>Lucky Taxi - Визитка</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Times New Roman', serif;
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat, #f5e9d7;
+            background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.expats.cz%2Fczech-news%2Farticle%2Fvideo-drones-light-up-the-night-sky-over-prague&psig=AOvVaw07XGEX9rw4xwQQPMB87_gL&ust=1742328719482000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjK3bj2kYwDFQAAAAAdAAAAABAR') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,128 +19,109 @@
         .card {
             position: relative;
             width: 450px;
-            background: rgba(245, 233, 215, 0.9);
-            border: 5px solid #2c2c2c;
-            border-radius: 10px;
-            padding: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            border: 2px solid #00e5ff;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+            animation: neonGlow 1.5s infinite alternate;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #d4af37;
-            border-radius: 10px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        @keyframes neonGlow {
+            from { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5); }
+            to { box-shadow: 0 0 30px rgba(0, 229, 255, 0.8); }
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #00e5ff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .avatar:hover {
+            transform: scale(1.1);
         }
         h1 {
-            font-family: 'Georgia', serif;
-            font-size: 40px;
-            color: #2c2c2c;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typewriter 3s steps(20) forwards;
-        }
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        h1::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 2px;
-            height: 100%;
-            background: #2c2c2c;
-            animation: blink 0.5s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00e5ff;
+            text-shadow: 0 0 10px #00e5ff, 0 0 20px #e91e63;
+            margin-bottom: 10px;
         }
         p.bio {
             font-size: 18px;
-            color: #2c2c2c;
-            margin-bottom: 30px;
-            font-style: italic;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
         }
         .social-links {
             margin: 20px 0;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
         }
         .social-btn {
-            margin: 0 10px;
+            display: inline-block;
+            margin: 10px;
             padding: 12px 25px;
-            background: #d4af37;
-            border: 2px solid #2c2c2c;
-            border-radius: 5px;
-            color: #2c2c2c;
+            background: linear-gradient(90deg, #e91e63, #ff4081);
+            border-radius: 25px;
+            color: #fff;
             font-weight: bold;
             text-decoration: none;
             font-size: 16px;
-            cursor: pointer;
-            position: relative;
             transition: all 0.3s ease;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
         }
         .social-btn:hover {
-            background: #e6c15a;
-            transform: translateY(-2px);
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
+            background: linear-gradient(90deg, #ff4081, #e91e63);
         }
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .call-btn {
+            background: linear-gradient(90deg, #00e5ff, #00b8d4);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
         }
-        .social-btn:hover::before {
-            opacity: 1;
+        .call-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
         }
         @media (max-width: 480px) {
             .card { width: 90%; padding: 20px; }
-            h1 { font-size: 30px; }
+            .avatar { width: 100px; height: 100px; }
+            h1 { font-size: 28px; }
             p.bio { font-size: 16px; }
-            .social-btn { font-size: 14px; padding: 10px 20px; }
+            .social-btn { font-size: 14px; padding: 10px 20px; margin: 5px; }
         }
     </style>
 </head>
 <body>
     <div class="card">
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.perunica.ru%2Fvsako%2F5368-chto-oznachaet-vasha-avatarka.html&psig=AOvVaw2H4jCcDjreohGVhgLyjsiZ&ust=1742328800967000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJinlt72kYwDFQAAAAAdAAAAABAE" alt="Аватар" class="avatar">
         <h1>Lucky Taxi</h1>
-        <p class="bio">Иван Иванов - Такси Праги с душой!</p>
+        <p class="bio">Lucky Taxi!</p>
         <div class="social-links">
             <a href="https://t.me/твой_телеграм" target="_blank" class="social-btn">Telegram</a>
             <a href="https://wa.me/твой_номер_whatsapp" target="_blank" class="social-btn">WhatsApp</a>
             <a href="https://vk.com/твой_vk" target="_blank" class="social-btn">VK</a>
         </div>
+        <button class="call-btn" onclick="window.location.href='tel:+твой_номер_телефона'">Позвонить</button>
     </div>
 
     <script>
-        // Эффект "шум радио" при наведении
-        const buttons = document.querySelectorAll('.social-btn');
-        buttons.forEach(btn => {
-            btn.addEventListener('mouseover', () => {
-                const audio = new Audio('https://www.myinstants.com/media/sounds/radio-static.mp3');
-                audio.play();
-            });
-        });
-
-        // Эффект наклона карточки
         window.addEventListener('mousemove', (e) => {
             const card = document.querySelector('.card');
             const x = (window.innerWidth / 2 - e.clientX) / 50;
