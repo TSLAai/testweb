@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Taxi Retro - Визитка</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', serif;
+            min-height: 100vh;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat, #f5e9d7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card {
+            position: relative;
+            width: 450px;
+            background: rgba(245, 233, 215, 0.9);
+            border: 5px solid #2c2c2c;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            font-size: 40px;
+            color: #2c2c2c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typewriter 3s steps(20) forwards;
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: #2c2c2c;
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        p.bio {
+            font-size: 18px;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .social-btn {
+            margin: 0 10px;
+            padding: 12px 25px;
+            background: #d4af37;
+            border: 2px solid #2c2c2c;
+            border-radius: 5px;
+            color: #2c2c2c;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .social-btn:hover {
+            background: #e6c15a;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .social-btn:hover::before {
+            opacity: 1;
+        }
+        @media (max-width: 480px) {
+            .card { width: 90%; padding: 20px; }
+            h1 { font-size: 30px; }
+            p.bio { font-size: 16px; }
+            .social-btn { font-size: 14px; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Lucky Taxi</h1>
+        <p class="bio">Иван Иванов - Такси Праги с душой!</p>
+        <div class="social-links">
+            <a href="https://t.me/твой_телеграм" target="_blank" class="social-btn">Telegram</a>
+            <a href="https://wa.me/твой_номер_whatsapp" target="_blank" class="social-btn">WhatsApp</a>
+            <a href="https://vk.com/твой_vk" target="_blank" class="social-btn">VK</a>
+        </div>
+    </div>
+
+    <script>
+        // Эффект "шум радио" при наведении
+        const buttons = document.querySelectorAll('.social-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseover', () => {
+                const audio = new Audio('https://www.myinstants.com/media/sounds/radio-static.mp3');
+                audio.play();
+            });
+        });
+
+        // Эффект наклона карточки
+        window.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.card');
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    </script>
+</body>
+</html>
