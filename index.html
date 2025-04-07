@@ -1,134 +1,296 @@
 <!DOCTYPE html>
-<html lang="ru">
-<title>\ PROTOTYPE \ UNDER DEVELOPMENT \ ALPHA </title>
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Taxi - Визитка</title>
+    <title>Lucky Taxi - Společenství řidičů v ČR</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #FFD700; /* Zlatý - символ удачи */
+            --secondary: #2C3E50;
+            --accent: #E74C3C;
+            --dark: #1A1A1A;
+        }
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
-            background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.expats.cz%2Fczech-news%2Farticle%2Fvideo-drones-light-up-the-night-sky-over-prague&psig=AOvVaw07XGEX9rw4xwQQPMB87_gL&ust=1742328719482000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjK3bj2kYwDFQAAAAAdAAAAABAR') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: #FAFAFA;
         }
-        .card {
-            position: relative;
-            width: 450px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            border: 2px solid #00e5ff;
-            border-radius: 15px;
-            padding: 30px;
+        
+        /* Шапка с предупреждением о забастовке */
+        .alert-bar {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 0;
             text-align: center;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-            animation: neonGlow 1.5s infinite alternate;
-        }
-        @keyframes neonGlow {
-            from { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5); }
-            to { box-shadow: 0 0 30px rgba(0, 229, 255, 0.8); }
-        }
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #00e5ff;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-            transition: transform 0.3s ease;
-        }
-        .avatar:hover {
-            transform: scale(1.1);
-        }
-        h1 {
-            font-size: 36px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #00e5ff;
-            text-shadow: 0 0 10px #00e5ff, 0 0 20px #e91e63;
-            margin-bottom: 10px;
-        }
-        p.bio {
-            font-size: 18px;
-            color: #e0e0e0;
-            margin-bottom: 20px;
-            text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
-        }
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .social-btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 25px;
-            background: linear-gradient(90deg, #e91e63, #ff4081);
-            border-radius: 25px;
-            color: #fff;
             font-weight: bold;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
         }
-        .social-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
-            background: linear-gradient(90deg, #ff4081, #e91e63);
+        
+        /* Навигация */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .call-btn {
-            background: linear-gradient(90deg, #00e5ff, #00b8d4);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 18px;
+        
+        .nav-logo {
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        .nav-logo span {
+            color: var(--primary);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        /* Карточки требований */
+        .demand-card {
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .demand-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Секция с комментариями */
+        .testimonial {
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        /* Кнопки */
+        .btn-cta {
+            background-color: var(--primary);
+            color: var(--dark);
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-        }
-        .call-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
-        }
-        @media (max-width: 480px) {
-            .card { width: 90%; padding: 20px; }
-            .avatar { width: 100px; height: 100px; }
-            h1 { font-size: 28px; }
-            p.bio { font-size: 16px; }
-            .social-btn { font-size: 14px; padding: 10px 20px; margin: 5px; }
         }
     </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="card">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.perunica.ru%2Fvsako%2F5368-chto-oznachaet-vasha-avatarka.html&psig=AOvVaw2H4jCcDjreohGVhgLyjsiZ&ust=1742328800967000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJinlt72kYwDFQAAAAAdAAAAABAE" alt="Аватар" class="avatar">
-        <h1>Lucky Taxi</h1>
-        <p class="bio">Lucky Taxi!</p>
-        <div class="social-links">
-            <a href="https://t.me/твой_телеграм" target="_blank" class="social-btn">Telegram</a>
-            <a href="https://wa.me/твой_номер_whatsapp" target="_blank" class="social-btn">WhatsApp</a>
-            <a href="https://vk.com/твой_vk" target="_blank" class="social-btn">VK</a>
+    <!-- Предупреждающая полоса -->
+    <div class="alert-bar">
+        <div class="container">
+            ⚠️ 27.06.2024 - Řidiči BOLT a UBER v ČR stávkují! Požadavky níže.
         </div>
-        <button class="call-btn" onclick="window.location.href='tel:+твой_номер_телефона'">Позвонить</button>
     </div>
 
-    <script>
-        window.addEventListener('mousemove', (e) => {
-            const card = document.querySelector('.card');
-            const x = (window.innerWidth / 2 - e.clientX) / 50;
-            const y = (window.innerHeight / 2 - e.clientY) / 50;
-            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        });
-    </script>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand nav-logo" href="#">
+                <span>Lucky</span> Taxi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demands">Požadavky</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">O nás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#join">Připojit se</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <a href="#support" class="btn btn-cta">Podpořte nás</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container text-center py-5">
+            <h1 class="display-4 fw-bold mb-4">Společně za lepší podmínky</h1>
+            <p class="lead mb-5">Společenství řidičů taxi v České republice bojující za spravedlivé tarify a důstojné pracovní podmínky</p>
+            <a href="#demands" class="btn btn-lg btn-cta">Naše požadavky</a>
+        </div>
+    </section>
+
+    <!-- Секция с требованиями -->
+    <section id="demands" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Hlavní požadavky stávky</h2>
+                <p class="text-muted">27. června 2024</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 demand-card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                    <i class="fas fa-money-bill-wave text-primary fs-4"></i>
+                                </div>
+                                <h4 class="mb-0">Spravedlivé ceny</h4>
+                            </div>
+                            <p class="card-text">
+                                Tarify musí zohledňovat všechny náklady: provize platforem, palivo, údržbu vozidel a lidské úsilí. 
+                                Ekonomická třída by měla být omezena pouze na vozy vyrobené mezi lety 2005-2010.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 demand-card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                    <i class="fas fa-chart-line text-primary fs-4"></i>
+                                </div>
+                                <h4 class="mb-0">Zrušení koeficientů</h4>
+                            </div>
+                            <p class="card-text">
+                                Ceny v dopravní špičce nesmí záviset na proměnných koeficientech. 
+                                Navrhujeme pevné příplatky za špičku, které budou transparentní pro řidiče i zákazníky.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 demand-card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                    <i class="fas fa-user-shield text-primary fs-4"></i>
+                                </div>
+                                <h4 class="mb-0">Kontrola řidičů</h4>
+                            </div>
+                            <p class="card-text">
+                                Požadujeme důkladnější ověřování řidičů při registraci i během práce. 
+                                Informace v aplikaci musí odpovídat skutečnosti (model vozu, SPZ).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 demand-card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                    <i class="fas fa-handshake text-primary fs-4"></i>
+                                </div>
+                                <h4 class="mb-0">Dialog s platformami</h4>
+                            </div>
+                            <p class="card-text">
+                                Vytvoření pracovní skupiny se zástupci řidičů, Bolt a Uber pro pravidelná jednání 
+                                o tarifní politice a podmínkách spolupráce.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с комментариями -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="testimonial p-4 p-md-5 shadow">
+                        <blockquote class="mb-4">
+                            <i class="fas fa-quote-left fs-1 text-primary opacity-25"></i>
+                            <p class="fs-5">
+                                Nikdo není proti kontrolám řidičů, naopak všichni to podporujeme! 
+                                Ale to musí zajistit buď stát na legislativní úrovni, nebo samotné platformy 
+                                jako Bolt a Uber zvýšením požadavků na ověření řidičů.
+                            </p>
+                            <p>
+                                Když v aplikaci vidíte, že přijede Tesla, ale řidič pak píše, 
+                                že přijede Golf z roku 2012 s jinou SPZ, je to špatně. My chceme pořádek.
+                            </p>
+                            <i class="fas fa-quote-right fs-1 text-primary opacity-25 float-end"></i>
+                        </blockquote>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                                <h5 class="mb-0">Člen Lucky Taxi</h5>
+                                <small>Komentář k požadavkům</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Присоединиться" -->
+    <section id="join" class="py-5 bg-primary bg-opacity-10">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Chcete se připojit k našemu společenství?</h2>
+            <p class="lead mb-5">
+                Společně můžeme dosáhnout spravedlivějších podmínek pro všechny řidiče taxi v ČR.
+            </p>
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                <a href="#" class="btn btn-cta btn-lg px-4">
+                    <i class="fab fa-telegram me-2"></i> Telegram skupina
+                </a>
+                <a href="#" class="btn btn-outline-dark btn-lg px-4">
+                    <i class="fas fa-envelope me-2"></i> Kontaktní formulář
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="nav-logo"><span>Lucky</span> Taxi</h3>
+                    <p class="mt-3">
+                        Společenství řidičů taxi v České republice bojující za spravedlivé pracovní podmínky.
+                    </p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Kontakty</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fab fa-telegram me-2"></i> Telegram: @LuckyTaxi_CZ</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> Email: info@luckytaxi.cz</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Podpořte nás</h5>
+                    <p>
+                        Sdílejte naše požadavky na sociálních sítích s hashtagem 
+                        <span class="text-primary">#FairTaxiCZ</span>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="text-center">
+                <p class="mb-0">© 2024 Lucky Taxi. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
